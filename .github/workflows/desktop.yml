@@ -1,7 +1,9 @@
 name: Graham desktop
 on:
   push:
-    branches: ["codex/**"]
+    branches: ["main", "codex/**"]
+  pull_request:
+    branches: ["main"]
   workflow_dispatch:
 permissions:
   contents: read

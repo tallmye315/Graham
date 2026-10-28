@@ -1553,7 +1553,7 @@ dependencies = [
 
 [[package]]
 name = "graham-desktop"
-version = "0.1.23"
+version = "0.1.0"
 dependencies = [
  "dunce",
  "graham-ledger",
@@ -1568,7 +1568,7 @@ dependencies = [
 
 [[package]]
 name = "graham-ledger"
-version = "0.1.23"
+version = "0.1.0"
 dependencies = [
  "age",
  "chrono",
