@@ -2,7 +2,7 @@
 
 Graham 是一款开源的中文 Windows 个人投资账本，用于记录和分析 A 股、港股与美股投资。它将多账户的现金、交易、持仓和分红保存在本机，结合市场行情展示资产估值与投资表现。
 
-当前源码版本：**0.1.0**，首次公开源码预览版。项目处于早期开发阶段，目前主要支持 **Windows x64**。功能与限制见 [v0.1.0 发布说明](docs/releases/v0.1.0.md)。
+当前版本：**0.1.0**，首次公开预览版。项目处于早期开发阶段，目前主要支持 **Windows x64**。功能与限制见 [v0.1.0 发布说明](docs/releases/v0.1.0.md)。
 
 [安装与使用](#安装与使用) · [开发与构建](#开发与构建) · [当前限制](#当前限制) · [MIT 许可证](LICENSE)
 
@@ -39,13 +39,15 @@ Graham 是一款开源的中文 Windows 个人投资账本，用于记录和分�
 
 ### Windows 安装包
 
-`v0.1.0` 以源码 Pre-release 形式发布，未附带 Windows 安装包。可下载 Release 自动提供的源码归档，并按下文构建。
+`v0.1.0` 以 Pre-release 形式发布，提供 Windows x64 安装包及源码归档。
 
-1. 前往 [GitHub Releases](https://github.com/tallmye315/Graham/releases)，查看是否已有公开安装包；若尚未发布，请按下文从源码构建。
+1. 前往 [v0.1.0 Release](https://github.com/tallmye315/Graham/releases/tag/v0.1.0)，在 Assets 中下载安装包；同页提供 `SHA256SUMS.txt` 校验文件。
 2. 下载对应版本的 `Graham_<版本>_x64-setup.exe`，运行安装程序，按提示完成当前用户安装。
 3. 从桌面或开始菜单打开 Graham，创建投资账户后，手动登记记录或导入统一格式 CSV。
 
 安装包内置 Python 行情运行时，使用安装版无需另行安装 Python、Node.js 或 Rust。获取新行情需要联网；已有记录和缓存可在本地查看。
+
+当前安装包尚未进行代码签名，Windows 可能显示未知发布者提示。完全断网、无 Python / WebView2 的干净 Windows 安装仍待独立验收。
 
 ### 初次建账
 
