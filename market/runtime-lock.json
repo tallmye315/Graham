@@ -1,0 +1,330 @@
+{
+  "python": {
+    "version": "3.13.17",
+    "filename": "python-3.13.17-embed-amd64.zip",
+    "url": "https://www.python.org/ftp/python/3.13.17/python-3.13.17-embed-amd64.zip",
+    "sha256": "9e35319bffedab8b36ad44d8f377cb4f1733bcec257a0b6d04d94f01486ddb38"
+  },
+  "packages": [
+    {
+      "name": "akshare",
+      "version": "1.19.3",
+      "filename": "akshare-1.19.3-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/a9/cd/e7a1b9e60bc6fd12fae26b17326d535413cc845379090aa4b05f3cbcddb0/akshare-1.19.3-py3-none-any.whl",
+      "sha256": "a93cbe67acf2042e922bc05a3a817ee51406e21855b8da98e23fa60b18325b12",
+      "kind": "wheel"
+    },
+    {
+      "name": "beautifulsoup4",
+      "version": "4.15.0",
+      "filename": "beautifulsoup4-4.15.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/88/c6/92fcd42f1ba33e1184263f25bfabf3d27c383410470f169e4b8163bf9c17/beautifulsoup4-4.15.0-py3-none-any.whl",
+      "sha256": "d6f88de62e1d4e38ecb1077eb9724cd0eff29d2a08ca16a401e9b9e93f117cf9",
+      "kind": "wheel"
+    },
+    {
+      "name": "certifi",
+      "version": "2026.10.23",
+      "filename": "certifi-2026.10.23-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/32/d1/a3652fe2c19134d0d15922177821d863cbd7e842d53a21bbe7e8e3a1b5ac/certifi-2026.10.23-py3-none-any.whl",
+      "sha256": "e9b54de76e530bb6cf0ccd036787103acb58fd42ba930ea8bf948ddbaa2f61d1",
+      "kind": "wheel"
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.1",
+      "filename": "cffi-2.1.1-cp313-cp313-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/60/a6/8b149b2c3f2e11aaa1618ef64500b45f50f22c57a977a4dff1aff1f91042/cffi-2.1.1-cp313-cp313-win_amd64.whl",
+      "sha256": "1aa5645c30469b09530c4ebca77ebf8f17618293c58f8549cb1a543a50236e7d",
+      "kind": "wheel"
+    },
+    {
+      "name": "charset-normalizer",
+      "version": "3.5.2",
+      "filename": "charset_normalizer-3.5.2-cp313-cp313-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/9c/76/b8ec57f4e9ee3253541abf95e4a462c0175fe8032dcd070f1f2421240942/charset_normalizer-3.5.2-cp313-cp313-win_amd64.whl",
+      "sha256": "78456a747de8dc58360ffa581f30a002baf5aa28cb262536545e91f113ed7639",
+      "kind": "wheel"
+    },
+    {
+      "name": "colorama",
+      "version": "0.4.6",
+      "filename": "colorama-0.4.6-py2.py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/d1/d6/3965ed04c63042e047cb6a3e6ed1a63a35087b6a609aa3a15ed8ac56c221/colorama-0.4.6-py2.py3-none-any.whl",
+      "sha256": "4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6",
+      "kind": "wheel"
+    },
+    {
+      "name": "curl_cffi",
+      "version": "0.17.0",
+      "filename": "curl_cffi-0.17.0-cp310-abi3-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/a1/9f/e860ed1a3fc55c06ea2a148613d07342dc6c6ec2844a2f0ee864eb1b19ce/curl_cffi-0.17.0-cp310-abi3-win_amd64.whl",
+      "sha256": "4c3993c7df155d622869b82a56adb018440587fd3faffeaf8d01cc016d2e1357",
+      "kind": "wheel"
+    },
+    {
+      "name": "decorator",
+      "version": "5.3.1",
+      "filename": "decorator-5.3.1-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/05/7f/798705f5296a58ca505d600456748d1be48078eac8a7050d8a98bc9edb89/decorator-5.3.1-py3-none-any.whl",
+      "sha256": "f47fe6fdbd2edd623ecfe36875d37aba411624e2670dd395dddae1358689bb3c",
+      "kind": "wheel"
+    },
+    {
+      "name": "et_xmlfile",
+      "version": "2.0.0",
+      "filename": "et_xmlfile-2.0.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/c1/8b/5fe2cc11fee489817272089c4203e679c63b570a5aaeb18d852ae3cbba6a/et_xmlfile-2.0.0-py3-none-any.whl",
+      "sha256": "7a91720bc756843502c3b7504c77b8fe44217c85c537d85037f0f536151b2caa",
+      "kind": "wheel"
+    },
+    {
+      "name": "exchange_calendars",
+      "version": "4.13.2",
+      "filename": "exchange_calendars-4.13.2-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/c8/4c/0469b40057bc9f8d9594dcc6024202626b981ae4b52dfcd304552e8e1c3a/exchange_calendars-4.13.2-py3-none-any.whl",
+      "sha256": "fc5a2ad0d61b5c3a6539a3061cd4cbb55c59f4a903455cec7926e4b798919996",
+      "kind": "wheel"
+    },
+    {
+      "name": "html5lib",
+      "version": "1.1",
+      "filename": "html5lib-1.1-py2.py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/6c/dd/a834df6482147d48e225a49515aabc28974ad5a4ca3215c18a882565b028/html5lib-1.1-py2.py3-none-any.whl",
+      "sha256": "0d78f8fde1c230e99fe37986a60526d7049ed4bf8a9fadbad5f00e22e58e041d",
+      "kind": "wheel"
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "filename": "idna-3.20-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/58/a2/bb081bab032533a855d44de1d56f8e8426114ff1ba5d1f07a438a0a654f8/idna-3.20-py3-none-any.whl",
+      "sha256": "ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c",
+      "kind": "wheel"
+    },
+    {
+      "name": "jsonpath",
+      "version": "0.82.2",
+      "filename": "jsonpath-0.82.2.tar.gz",
+      "url": "https://files.pythonhosted.org/packages/cf/a1/693351acd0a9edca4de9153372a65e75398898ea7f8a5c722ab00f464929/jsonpath-0.82.2.tar.gz",
+      "sha256": "d87ef2bcbcded68ee96bc34c1809b69457ecec9b0c4dd471658a12bd391002d1",
+      "kind": "jsonpath-source"
+    },
+    {
+      "name": "korean_lunar_calendar",
+      "version": "0.4.0",
+      "filename": "korean_lunar_calendar-0.4.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/c1/88/f56033b09fdca5c8c5e5fc2f3513950a05cd62caa9bd8e6d2750a887c86e/korean_lunar_calendar-0.4.0-py3-none-any.whl",
+      "sha256": "c042e20de0bb702add6bec8d0f6da1ea8d3b170838e63846f70420cf341fe4e7",
+      "kind": "wheel"
+    },
+    {
+      "name": "lxml",
+      "version": "6.1.3",
+      "filename": "lxml-6.1.3-cp313-cp313-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/c0/28/e46a7702bd95e9043291f7c3539b6184cba66f96cea9936f20939b284eeb/lxml-6.1.3-cp313-cp313-win_amd64.whl",
+      "sha256": "e477aca0bc0d19f3b4ae9e4f2a1cfd687c31bf772d78734910658186b40b2477",
+      "kind": "wheel"
+    },
+    {
+      "name": "mini-racer",
+      "version": "0.14.1",
+      "filename": "mini_racer-0.14.1-py3-none-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/78/60/e0708ea8533e928f10f985be35af4c02dd2b61f4a7501dc88e8c927d85e5/mini_racer-0.14.1-py3-none-win_amd64.whl",
+      "sha256": "4abd58c62c9955988dbc0cbf5a798914334fe570d2b192f8890bec20135ab6d1",
+      "kind": "wheel"
+    },
+    {
+      "name": "multitasking",
+      "version": "0.0.13",
+      "filename": "multitasking-0.0.13-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/d3/1c/24dbf69b247f287401c904a396233a43c89fd4fb9b7cd2e50e430e9cd57c/multitasking-0.0.13-py3-none-any.whl",
+      "sha256": "ec9243af140c67bfe52dc98d7173c294512735a88e8425c458b250db99dc2b48",
+      "kind": "wheel"
+    },
+    {
+      "name": "numpy",
+      "version": "2.5.4",
+      "filename": "numpy-2.5.4-cp313-cp313-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/90/8c/140a40398a66b4471211be1affdb6ed24c486d581bd28d07b7f2fcb69540/numpy-2.5.4-cp313-cp313-win_amd64.whl",
+      "sha256": "8b4d2fd2d34e5f8c9235ee787de5631a37a28402b15cb80814df973d2be54129",
+      "kind": "wheel"
+    },
+    {
+      "name": "openpyxl",
+      "version": "3.1.5",
+      "filename": "openpyxl-3.1.5-py2.py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/c0/da/977ded879c29cbd04de313843e76868e6e13408a94ed6b987245dc7c8506/openpyxl-3.1.5-py2.py3-none-any.whl",
+      "sha256": "5282c12b107bffeef825f4617dc029afaf41d0ea60823bbb665ef3079dc79de2",
+      "kind": "wheel"
+    },
+    {
+      "name": "pandas",
+      "version": "3.1.0",
+      "filename": "pandas-3.1.0-cp313-cp313-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/e3/5c/ea5472e8444f5871427f3a6818725684fcdce74223ca1b22aa7ca345d490/pandas-3.1.0-cp313-cp313-win_amd64.whl",
+      "sha256": "07807035ad66de0d833d68f9bee05801dbf08b88d56a233b0e9fd189372c3261",
+      "kind": "wheel"
+    },
+    {
+      "name": "peewee",
+      "version": "4.5.3",
+      "filename": "peewee-4.5.3-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/76/e3/1f3847b62db730a58c6f6d689c060d7228721f3a66e612a27cda297e875a/peewee-4.5.3-py3-none-any.whl",
+      "sha256": "4c5db9d2a3c4ae9a5725b229c29af51dbd063193f3a6c03b837974a90e44548c",
+      "kind": "wheel"
+    },
+    {
+      "name": "platformdirs",
+      "version": "4.13.5",
+      "filename": "platformdirs-4.13.5-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/6c/8a/1d8cb3842909dc193a73835adedf412e32e18f8ffd59f43983949622fe6f/platformdirs-4.13.5-py3-none-any.whl",
+      "sha256": "53d3ec4280b815c1e0b02edad7f9ee8fda1ba9c0865dd9c2e6e63849ce82fc1e",
+      "kind": "wheel"
+    },
+    {
+      "name": "protobuf",
+      "version": "7.36.2",
+      "filename": "protobuf-7.36.2-cp310-abi3-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/8a/55/b77bda4e5e5f5971fb51b07663694690e9afdb9402136c16a522bd621cad/protobuf-7.36.2-cp310-abi3-win_amd64.whl",
+      "sha256": "a300819d441e078a5608c0d3c709796bb548136058fda017ae51d425b44fd353",
+      "kind": "wheel"
+    },
+    {
+      "name": "pycparser",
+      "version": "3.12",
+      "filename": "pycparser-3.12-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/b6/ae/315bbeee126a769cbde43cf4908acb4b40408d8bf8bbf334dd7368d8dadf/pycparser-3.12-py3-none-any.whl",
+      "sha256": "a076f3f489b39b43ed13563a1dafe42447445bec2e294154ec5c57fcdda4c85e",
+      "kind": "wheel"
+    },
+    {
+      "name": "pyluach",
+      "version": "2.3.0",
+      "filename": "pyluach-2.3.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/8a/c8/f96208ade3ca4c23b372497d0788bcf0f2e0ff4310e5ee693366bc33fdf0/pyluach-2.3.0-py3-none-any.whl",
+      "sha256": "4497b731aef59508b079dbf5f00bc5bf4329ac45090a6cd37b5a83756f0e69ab",
+      "kind": "wheel"
+    },
+    {
+      "name": "python-dateutil",
+      "version": "3.0.0",
+      "filename": "python_dateutil-3.0.0-py2.py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/5a/17/cebee01d1c0c1441174cf0456ddc91b280d79acb65340c05e41d77866ee8/python_dateutil-3.0.0-py2.py3-none-any.whl",
+      "sha256": "3c79630202e4152c6add678446984236efe4f57e84d8e892aab0637bab82e9fd",
+      "kind": "wheel"
+    },
+    {
+      "name": "pytz",
+      "version": "2026.5",
+      "filename": "pytz-2026.5-py2.py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/4f/ef/c66110d46fb800dda0bf33164182dfadabe26a90e4476844d502a23dca8e/pytz-2026.5-py2.py3-none-any.whl",
+      "sha256": "e658af3757f9e26a9d25dd2aff38335acd92bc9104f890a894b2c1ba28311b03",
+      "kind": "wheel"
+    },
+    {
+      "name": "requests",
+      "version": "2.34.2",
+      "filename": "requests-2.34.2-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/a0/f4/c67b0b3f1b9245e8d266f0f112c500d50e5b4e83cb6f3b71b6528104182a/requests-2.34.2-py3-none-any.whl",
+      "sha256": "2a0d60c172f83ac6ab31e4554906c0f3b3588d37b5cb939b1c061f4907e278e0",
+      "kind": "wheel"
+    },
+    {
+      "name": "six",
+      "version": "1.17.0",
+      "filename": "six-1.17.0-py2.py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl",
+      "sha256": "4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274",
+      "kind": "wheel"
+    },
+    {
+      "name": "soupsieve",
+      "version": "3.0.4",
+      "filename": "soupsieve-3.0.4-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/07/66/473f7ca0be0b06e38ee8c85ee2db184e3981bd769fac2e7c19c8a8865211/soupsieve-3.0.4-py3-none-any.whl",
+      "sha256": "8412826614f9c632227067d0985aeb9f584bd15efc852955430e097a9fe7afbf",
+      "kind": "wheel"
+    },
+    {
+      "name": "tabulate",
+      "version": "0.10.0",
+      "filename": "tabulate-0.10.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/99/55/db07de81b5c630da5cbf5c7df646580ca26dfaefa593667fc6f2fe016d2e/tabulate-0.10.0-py3-none-any.whl",
+      "sha256": "f0b0622e567335c8fabaaa659f1b33bcb6ddfe2e496071b743aa113f8774f2d3",
+      "kind": "wheel"
+    },
+    {
+      "name": "toolz",
+      "version": "1.2.0",
+      "filename": "toolz-1.2.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/db/17/4c8beb6c8c4176c6bf143bfd7e1e4dd6719b00ced90738c7ac471b71c1df/toolz-1.2.0-py3-none-any.whl",
+      "sha256": "890f820b1cb8152785aaf9386d8707770110809035800985ca65cb24ce1120ef",
+      "kind": "wheel"
+    },
+    {
+      "name": "tqdm",
+      "version": "4.70.1",
+      "filename": "tqdm-4.70.1-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/a7/03/921a3d3c75785aca9ebfbfcabfbc3a1be12e2ab5265deb026d55a5a3f83e/tqdm-4.70.1-py3-none-any.whl",
+      "sha256": "c293e525e6fef9c20e8728fd4612df02a0aa31bb5fe91ecd93e123b1b7bffa73",
+      "kind": "wheel"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "filename": "typing_extensions-4.16.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl",
+      "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+      "kind": "wheel"
+    },
+    {
+      "name": "tzdata",
+      "version": "2026.5",
+      "filename": "tzdata-2026.5-py2.py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/94/21/1e5995a1c920cce14e4bffae20c665ec10e7ed03ab25e006cd741092b718/tzdata-2026.5-py2.py3-none-any.whl",
+      "sha256": "b683bd1b6659ddcd810ff02ad09ba821d4bf1065072805063eb35c49617905ac",
+      "kind": "wheel"
+    },
+    {
+      "name": "urllib3",
+      "version": "2.8.0",
+      "filename": "urllib3-2.8.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/92/9d/c4e665119135114480843e7ab388fa94d8480650450e6f8e26b70d323a4c/urllib3-2.8.0-py3-none-any.whl",
+      "sha256": "0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3",
+      "kind": "wheel"
+    },
+    {
+      "name": "webencodings",
+      "version": "0.6.1",
+      "filename": "webencodings-0.6.1-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/77/c6/040cbc72480d789a5f40d63fb484d3106554c4dfa2d2b70ad5022057750f/webencodings-0.6.1-py3-none-any.whl",
+      "sha256": "7fab6269c8bf237c657876b52058ccb182e861518d1c695c1a9aaa8c1c105d5b",
+      "kind": "wheel"
+    },
+    {
+      "name": "websockets",
+      "version": "17.3",
+      "filename": "websockets-17.3-cp313-cp313-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/7d/6c/db5c907d1cbea84444bc759ff63db97fc586988d11a34d5565e8b50080fa/websockets-17.3-cp313-cp313-win_amd64.whl",
+      "sha256": "66027e401c70d0cf55021b91b8a7ec2cd5810e20602f945b4fe6ae8b37ed232b",
+      "kind": "wheel"
+    },
+    {
+      "name": "xlrd",
+      "version": "2.0.2",
+      "filename": "xlrd-2.0.2-py2.py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/1a/62/c8d562e7766786ba6587d09c5a8ba9f718ed3fa8af7f4553e8f91c36f302/xlrd-2.0.2-py2.py3-none-any.whl",
+      "sha256": "ea762c3d29f4cca48d82df517b6d89fbce4db3107f9d78713e48cd321d5c9aa9",
+      "kind": "wheel"
+    },
+    {
+      "name": "yfinance",
+      "version": "1.7.0",
+      "filename": "yfinance-1.7.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/5f/12/7efaf78fcf63711ad7271704dd22963b4cbe05d95d89b9865a1c5c0bad6f/yfinance-1.7.0-py3-none-any.whl",
+      "sha256": "91281ecd1f71069a37155ff8653aff2d3085f3492bd8721f18b70955da62911a",
+      "kind": "wheel"
+    }
+  ]
+}

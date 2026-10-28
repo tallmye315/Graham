@@ -1,0 +1,166 @@
+name: Graham desktop
+on:
+  push:
+    branches: ["codex/**"]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: desktop-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  ledger-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ledger-${{ runner.os }}-${{ hashFiles('Cargo.lock', '**/Cargo.toml') }}
+          restore-keys: ledger-${{ runner.os }}-
+      - run: cargo test -p graham-ledger --locked
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run check
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rust-lock
+          path: Cargo.lock
+  windows-build:
+    if: ${{ !contains(github.event.head_commit.message, '[ledger-only]') }}
+    needs: ledger-tests
+    runs-on: windows-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+            ~/AppData/Local/tauri
+          key: desktop-${{ runner.os }}-${{ hashFiles('Cargo.lock', '**/Cargo.toml') }}
+          restore-keys: desktop-${{ runner.os }}-
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/cache@v4
+        with:
+          path: artifacts/market-packages
+          key: market-windows-${{ hashFiles('market/runtime-lock.json') }}
+      - name: Build hash-locked portable market runtime
+        run: python scripts/build-market-runtime.py
+      - name: Verify isolated portable market runtime offline
+        run: python scripts/verify-market-runtime.py
+      - run: npm ci
+      - run: npm run desktop -- build -- --locked
+      - run: cargo test -p graham-ledger --locked
+      - name: Verify installed shortcuts and native window icons
+        shell: pwsh
+        run: |
+          function Invoke-GrahamCommand([string]$path, [string[]]$arguments, [int]$timeoutMilliseconds) {
+            $info = [Diagnostics.ProcessStartInfo]::new($path)
+            $info.UseShellExecute = $false
+            $info.CreateNoWindow = $true
+            $info.WindowStyle = [Diagnostics.ProcessWindowStyle]::Hidden
+            foreach ($argument in $arguments) { [void]$info.ArgumentList.Add($argument) }
+            $process = [Diagnostics.Process]::Start($info)
+            try {
+              if (!$process.WaitForExit($timeoutMilliseconds)) { throw 'Graham command timed out' }
+              if ($process.ExitCode -ne 0) { throw "Graham command failed: $($process.ExitCode)" }
+            } finally {
+              if (!$process.HasExited) { $process.Kill($true); [void]$process.WaitForExit(5000) }
+              $process.Dispose()
+            }
+          }
+          $grahamVersion = (Get-Content src-tauri/tauri.conf.json -Raw | ConvertFrom-Json).version
+          $grahamInstaller = (Resolve-Path "target/release/bundle/nsis/Graham_${grahamVersion}_x64-setup.exe").Path
+          Invoke-GrahamCommand $grahamInstaller @('/S') 120000
+          $grahamRegistration = Get-ItemProperty 'HKCU:/Software/Microsoft/Windows/CurrentVersion/Uninstall/*' | Where-Object DisplayName -eq 'Graham' | Select-Object -First 1
+          if ($grahamRegistration.DisplayVersion -ne $grahamVersion) { throw 'Installed version does not match build' }
+          $grahamInstallDirectory = $grahamRegistration.InstallLocation.Trim('"')
+          python scripts/verify-market-runtime.py --installed-dir $grahamInstallDirectory
+          if ($LASTEXITCODE -ne 0) { throw 'Installed portable runtime verification failed' }
+          $grahamAlias = Join-Path $env:RUNNER_TEMP 'Graham-shortcut-alias'
+          New-Item -ItemType Junction -Path $grahamAlias -Target $grahamInstallDirectory | Out-Null
+          $grahamPinned = Join-Path ([Environment]::GetFolderPath('ApplicationData')) 'Microsoft/Internet Explorer/Quick Launch/User Pinned/TaskBar'
+          New-Item -ItemType Directory -Path $grahamPinned -Force | Out-Null
+          $grahamShell = New-Object -ComObject WScript.Shell
+          $grahamRenamedPin = Join-Path $grahamPinned 'Renamed portfolio.lnk'
+          $grahamLink = $grahamShell.CreateShortcut($grahamRenamedPin)
+          $grahamLink.TargetPath = Join-Path $grahamAlias 'graham.exe'
+          $grahamLink.IconLocation = (Join-Path $grahamAlias 'graham-icon.ico') + ',0'
+          $grahamLink.WorkingDirectory = $grahamAlias
+          $grahamLink.Save()
+          python scripts/verify-windows-icons.py $grahamRenamedPin
+          if ($LASTEXITCODE -eq 0) { throw 'Alias fixture did not reproduce inconsistent shortcut paths' }
+          $grahamForeignDirectory = Join-Path $env:RUNNER_TEMP 'Other-installation'
+          New-Item -ItemType Directory -Path $grahamForeignDirectory | Out-Null
+          Copy-Item -LiteralPath (Join-Path $grahamInstallDirectory 'graham.exe') -Destination (Join-Path $grahamForeignDirectory 'graham.exe')
+          $grahamForeignPin = Join-Path $grahamPinned 'Graham-other.lnk'
+          $grahamLink = $grahamShell.CreateShortcut($grahamForeignPin)
+          $grahamLink.TargetPath = Join-Path $grahamForeignDirectory 'graham.exe'
+          $grahamLink.Arguments = '--keep-foreign'
+          $grahamLink.Save()
+          $grahamForeignHash = (Get-FileHash -LiteralPath $grahamForeignPin -Algorithm SHA256).Hash
+          Invoke-GrahamCommand (Join-Path $grahamAlias 'graham.exe') @('--repair-shortcuts') 20000
+          python scripts/verify-windows-icons.py $grahamRenamedPin
+          if ($LASTEXITCODE -ne 0) { throw 'Renamed owned taskbar shortcut was not repaired' }
+          if ((Get-FileHash -LiteralPath $grahamForeignPin -Algorithm SHA256).Hash -ne $grahamForeignHash) { throw 'Unrelated same-name executable shortcut was modified' }
+          python scripts/verify-windows-icons.py
+          if ($LASTEXITCODE -ne 0) { throw 'Desktop shortcut uses inconsistent paths or a missing icon' }
+          $grahamProgramsLink = Join-Path ([Environment]::GetFolderPath('Programs')) 'Graham.lnk'
+          python scripts/verify-windows-icons.py $grahamProgramsLink
+          if ($LASTEXITCODE -ne 0) { throw 'Start menu shortcut uses inconsistent paths or a missing icon' }
+          $grahamOriginalPath = $env:PATH
+          $grahamOriginalPythonHome = $env:PYTHONHOME
+          $grahamOriginalPythonPath = $env:PYTHONPATH
+          try {
+            $env:PATH = ''
+            $env:PYTHONHOME = Join-Path $env:RUNNER_TEMP 'no-system-python'
+            $env:PYTHONPATH = Join-Path $env:RUNNER_TEMP 'no-system-packages'
+            $grahamApp = Start-Process -FilePath (Join-Path $grahamInstallDirectory 'graham.exe') -WorkingDirectory $env:RUNNER_TEMP -WindowStyle Hidden -PassThru
+          } finally {
+            $env:PATH = $grahamOriginalPath
+            $env:PYTHONHOME = $grahamOriginalPythonHome
+            $env:PYTHONPATH = $grahamOriginalPythonPath
+          }
+          try {
+            python scripts/verify-windows-icons.py --process-id $grahamApp.Id --wait-window-seconds 20
+            if ($LASTEXITCODE -ne 0) { throw 'Native taskbar icon is missing' }
+            python scripts/verify-windows-icons.py --process-id $grahamApp.Id --small
+            if ($LASTEXITCODE -ne 0) { throw 'Native title-bar icon is missing' }
+          } finally {
+            Stop-Process -Id $grahamApp.Id -ErrorAction SilentlyContinue
+          }
+      - name: Verify Windows executables
+        id: executables
+        shell: pwsh
+        run: |
+          $grahamVersion = (Get-Content src-tauri/tauri.conf.json -Raw | ConvertFrom-Json).version
+          $grahamInstaller = "target/release/bundle/nsis/Graham_${grahamVersion}_x64-setup.exe"
+          if (!(Test-Path -LiteralPath $grahamInstaller) -or !(Test-Path target/release/graham.exe)) {
+            throw 'Missing desktop executable or NSIS installer'
+          }
+          Get-FileHash -Algorithm SHA256 -LiteralPath $grahamInstaller
+          "installer=$grahamInstaller" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+      - uses: actions/upload-artifact@v4
+        with:
+          name: graham-windows
+          path: |
+            ${{ steps.executables.outputs.installer }}
+            target/release/graham.exe
+            Cargo.lock

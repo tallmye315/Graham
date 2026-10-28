@@ -1,0 +1,9 @@
+import{render,screen}from'@testing-library/react';import userEvent from'@testing-library/user-event';import{expect,test,vi}from'vitest';import{invoke}from'@tauri-apps/api/core';import App from'./App';
+vi.mock('@tauri-apps/api/core',()=>({invoke:vi.fn()}));
+test('个人资金回报展示年化、区间和实际资金流，多解时保留原因而不显示零',async()=>{
+ const user=userEvent.setup();let ambiguous=false;vi.mocked(invoke).mockReset().mockImplementation(async(command)=>{
+ if(command==='ledger_snapshot')return{accounts:[{id:'a',name:'已建账',currency:'CNY',balance:'2310',archived:false,hasHistory:true}],entries:[],positions:[]};
+ if(command==='get_money_weighted'||command==='refresh_money_weighted'){if(command==='refresh_money_weighted')ambiguous=true;return{startOn:'2021-01-01',endOn:'2023-01-01',baselineOn:'2021-01-01',currency:'CNY',elapsedDays:730,annualizedReturn:ambiguous?null:'10.000000',periodReturn:ambiguous?null:'21.000000',status:ambiguous?'multiple_roots':'ok',reason:ambiguous?'存在多个年化解，不能选择其中一个作为真实回报':null,flows:[{date:'2021-01-01',kind:'opening',amount:'-1000.00',reasons:[]},{date:'2022-01-01',kind:'contribution',amount:'-1000.00',reasons:[]},{date:'2023-01-01',kind:'closing',amount:'2310.00',reasons:[]}],warnings:[],refresh:{pending:0,retryAt:null,error:null,active:false}};}
+ if(command==='stop_performance_refresh')return;throw new Error(String(command));
+ });render(<App/>);await user.click(await screen.findByRole('button',{name:'个人资金回报'}));expect(await screen.findByText('10.000000%')).toBeVisible();expect(screen.getByText('21.000000%')).toBeVisible();expect(screen.getByText('年化资金回报率')).toBeVisible();expect(screen.getByRole('table',{name:'资金回报计算明细'})).toHaveTextContent('2022-01-01');await user.click(screen.getByRole('button',{name:'更新资金回报数据'}));expect(await screen.findByText('存在多个年化解，不能选择其中一个作为真实回报')).toBeVisible();expect(screen.queryByText('0.000000%')).not.toBeInTheDocument();
+});

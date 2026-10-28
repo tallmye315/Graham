@@ -1,0 +1,6 @@
+[workspace]
+members = ["crates/ledger", "src-tauri"]
+resolver = "2"
+
+[profile.test.package.scrypt]
+opt-level = 3
