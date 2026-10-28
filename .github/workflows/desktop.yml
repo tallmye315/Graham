@@ -31,11 +31,6 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run check
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: rust-lock
-          path: Cargo.lock
   windows-build:
     if: ${{ !contains(github.event.head_commit.message, '[ledger-only]') }}
     needs: ledger-tests
@@ -162,6 +157,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: graham-windows
+          retention-days: 7
           path: |
             ${{ steps.executables.outputs.installer }}
             target/release/graham.exe
